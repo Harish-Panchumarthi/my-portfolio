@@ -31,7 +31,7 @@ export const PROFILE: Profile = {
   ],
   tagline:
     '12+ years crafting fast, accessible, enterprise-grade web experiences — from AngularJS to Angular 21, React and NX-powered micro frontends for Fortune 500 clients.',
-  location: 'Tampa, FL',
+  location: 'Charlotte, NC',
   phone: '(980) 643-1118',
   email: 'harishpanchumarthi0909@gmail.com',
   linkedin: 'https://www.linkedin.com/in/harish-panchumarthi-9b509110b/',
@@ -55,7 +55,7 @@ export const ABOUT = {
     'Across Citi, The Hartford, Walmart, Freddie Mac, T-Mobile and Sprint, I’ve shipped responsive, WCAG-compliant interfaces, introduced micro frontends, and built the automation that keeps code quality high so developers can focus on building.',
   ],
   facts: [
-    { label: 'Based in', value: 'Tampa, FL' },
+    { label: 'Based in', value: 'Charlotte, NC' },
     { label: 'Currently', value: 'Manager & Tech Lead · Capgemini' },
     { label: 'Experience', value: '12+ years' },
     { label: 'Education', value: 'M.S. Computer Science · UAB' },
@@ -310,7 +310,7 @@ export const EXPERIENCE: Job[] = [
     project: 'Global Liquidity Reporting System (GLRS)',
     role: 'Manager, Tech Lead',
     period: 'Dec 2021 — Present',
-    location: 'Tampa, FL',
+    location: 'Charlotte, NC',
     current: true,
     color: '#a855f7',
     summary:

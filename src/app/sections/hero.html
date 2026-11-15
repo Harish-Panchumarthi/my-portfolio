@@ -1,0 +1,82 @@
+<section id="home" class="hero">
+  <div class="container grid">
+    <div class="copy">
+      <div class="status">
+        <span class="pulse"></span>
+        Manager &amp; Tech Lead · Capgemini
+      </div>
+
+      <h1 class="title">
+        Hi, I’m <span class="gradient-text name">{{ profile.name }}</span>
+      </h1>
+
+      <p class="role">
+        <span class="role-prefix">&gt;</span>
+        <span class="typed">{{ typed() }}</span><span class="caret" aria-hidden="true"></span>
+      </p>
+
+      <p class="tagline">{{ profile.tagline }}</p>
+
+      <div class="cta">
+        <a href="#impact" class="btn btn-primary">
+          See my impact
+          <app-icon name="arrow" [size]="18" />
+        </a>
+        <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      </div>
+
+      <ul class="mini-stats">
+        <li><strong class="gradient-text">12+</strong><span>years</span></li>
+        <li><strong class="gradient-text-2">20+</strong><span>apps led</span></li>
+        <li><strong class="gradient-text">6</strong><span>enterprise clients</span></li>
+      </ul>
+    </div>
+
+    <div class="visual">
+      <div class="orbit" aria-hidden="true">
+        <span class="ring r1"></span>
+        <span class="ring r2"></span>
+        <span class="planet p1"></span>
+        <span class="planet p2"></span>
+      </div>
+
+      <div class="code glass" [appTilt]="8">
+        <div class="code-bar">
+          <span class="d red"></span><span class="d yellow"></span><span class="d green"></span>
+          <span class="file">harish.config.ts</span>
+        </div>
+<pre><code><span class="k">export const</span> <span class="v">harish</span> = &#123;
+  <span class="p">role</span>: <span class="s">'Frontend Architect'</span>,
+  <span class="p">experience</span>: <span class="s">'12+ years'</span>,
+  <span class="p">stack</span>: [<span class="s">'Angular'</span>, <span class="s">'React'</span>, <span class="s">'NX'</span>],
+  <span class="p">loadTime</span>: <span class="s">'15s → &lt;1s'</span>,
+  <span class="p">buildTime</span>: <span class="s">'15min → &lt;60s'</span>,
+  <span class="p">accessible</span>: <span class="b">true</span>,
+  <span class="p">ship</span>: () =&gt; <span class="s">'on time, every sprint'</span>,
+&#125;;</code></pre>
+      </div>
+
+      <div class="float-badge b1 glass">
+        <app-icon name="zap" [size]="18" />
+        <div><strong>94%</strong><span>faster load</span></div>
+      </div>
+      <div class="float-badge b2 glass">
+        <app-icon name="award" [size]="18" />
+        <div><strong>Gem Award</strong><span>Capgemini 2024</span></div>
+      </div>
+      <div class="float-badge b3 glass">
+        <app-icon name="layers" [size]="18" />
+        <div><strong>Angular 21</strong><span>v11 → 21 migrations</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="marquee" aria-hidden="true">
+    <div class="track">
+      @for (item of marquee; track $index) {
+        <span class="item"><app-icon name="sparkles" [size]="14" />{{ item }}</span>
+      }
+    </div>
+  </div>
+
+</section>

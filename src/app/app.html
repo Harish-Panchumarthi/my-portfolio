@@ -1,0 +1,28 @@
+<div class="progress" aria-hidden="true"></div>
+
+<div class="backdrop" aria-hidden="true">
+  <span class="blob b1"></span>
+  <span class="blob b2"></span>
+  <span class="blob b3"></span>
+  <span class="blob b4"></span>
+  <span class="grid-lines"></span>
+  <span class="cursor-glow"></span>
+</div>
+
+<a class="skip" href="#about">Skip to content</a>
+
+<app-nav />
+
+<main>
+  <app-hero />
+  <app-about />
+  <app-impact />
+  <app-skills />
+  <app-experience />
+  <app-recognition />
+  <app-contact />
+</main>
+
+<button class="to-top" [class.show]="showTop()" (click)="toTop()" aria-label="Back to top">
+  <app-icon name="chevron" [size]="20" />
+</button>

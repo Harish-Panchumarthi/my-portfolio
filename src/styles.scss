@@ -1,0 +1,379 @@
+/* ================================================================
+   Design tokens
+   ================================================================ */
+:root,
+:root[data-theme='dark'] {
+  --bg: #07070f;
+  --bg-soft: #0d0d1a;
+  --surface: rgba(255, 255, 255, 0.045);
+  --surface-strong: rgba(255, 255, 255, 0.08);
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.18);
+  --text: #eeedff;
+  --muted: #a09ec0;
+  --faint: #6b6990;
+  --shadow: 0 20px 60px -20px rgba(0, 0, 0, 0.7);
+  --blob-opacity: 0.55;
+  --code-bg: rgba(10, 10, 24, 0.75);
+  color-scheme: dark;
+}
+
+:root[data-theme='light'] {
+  --bg: #f6f5ff;
+  --bg-soft: #ffffff;
+  --surface: rgba(255, 255, 255, 0.72);
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --border: rgba(30, 20, 80, 0.09);
+  --border-strong: rgba(30, 20, 80, 0.2);
+  --text: #15122e;
+  --muted: #5a5679;
+  --faint: #8d8aab;
+  --shadow: 0 20px 50px -24px rgba(60, 40, 140, 0.35);
+  --blob-opacity: 0.32;
+  --code-bg: rgba(20, 16, 50, 0.92);
+  color-scheme: light;
+}
+
+:root {
+  --violet: #a855f7;
+  --pink: #ec4899;
+  --amber: #f59e0b;
+  --cyan: #06b6d4;
+  --indigo: #6366f1;
+  --emerald: #10b981;
+  --rose: #f43f5e;
+  --grad-1: linear-gradient(120deg, #a855f7 0%, #ec4899 50%, #f59e0b 100%);
+  --grad-2: linear-gradient(120deg, #06b6d4 0%, #6366f1 50%, #a855f7 100%);
+  --grad-3: linear-gradient(120deg, #10b981 0%, #06b6d4 100%);
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, Consolas, monospace;
+  --radius: 20px;
+  --radius-sm: 12px;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --nav-h: 72px;
+}
+
+/* ================================================================
+   Base
+   ================================================================ */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--nav-h) + 12px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background-color 0.4s var(--ease), color 0.4s var(--ease);
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  line-height: 1.15;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+  border: 0;
+  background: none;
+}
+
+::selection {
+  background: rgba(236, 72, 153, 0.35);
+}
+
+:focus-visible {
+  outline: 2px solid var(--pink);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* ================================================================
+   Layout helpers
+   ================================================================ */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.section {
+  position: relative;
+  padding: 120px 0;
+}
+
+@media (max-width: 720px) {
+  .container {
+    padding: 0 16px;
+  }
+  .section {
+    padding: 84px 0;
+  }
+}
+
+.section-head {
+  max-width: 720px;
+  margin-bottom: 56px;
+
+  &.center {
+    margin-inline: auto;
+    text-align: center;
+  }
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--pink);
+  margin-bottom: 16px;
+
+  &::before {
+    content: '';
+    width: 28px;
+    height: 2px;
+    border-radius: 2px;
+    background: var(--grad-1);
+  }
+}
+
+.section-title {
+  font-size: clamp(2rem, 4.5vw, 3.2rem);
+  font-weight: 700;
+}
+
+.section-sub {
+  margin-top: 16px;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.gradient-text {
+  background: var(--grad-1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.gradient-text-2 {
+  background: var(--grad-2);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ================================================================
+   Surfaces
+   ================================================================ */
+.glass {
+  position: relative;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  backdrop-filter: blur(18px) saturate(140%);
+  -webkit-backdrop-filter: blur(18px) saturate(140%);
+  box-shadow: var(--shadow);
+}
+
+/* Pointer-following spotlight (driven by appTilt directive) */
+.spotlight {
+  overflow: hidden;
+  transform: perspective(1000px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.3s var(--ease);
+  will-change: transform;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(
+      420px circle at var(--mx, 50%) var(--my, 50%),
+      rgba(236, 72, 153, 0.14),
+      transparent 45%
+    );
+    opacity: 0;
+    transition: opacity 0.35s var(--ease);
+    pointer-events: none;
+  }
+
+  &:hover {
+    border-color: var(--border-strong);
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+/* ================================================================
+   Buttons & chips
+   ================================================================ */
+.btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 26px;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.98rem;
+  transition:
+    transform 0.3s var(--ease),
+    box-shadow 0.3s var(--ease),
+    background-color 0.3s var(--ease);
+
+  svg {
+    transition: transform 0.3s var(--ease);
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    svg {
+      transform: translateX(3px);
+    }
+  }
+}
+
+.btn-primary {
+  color: #fff;
+  background: var(--grad-1);
+  background-size: 200% 100%;
+  box-shadow: 0 12px 34px -10px rgba(236, 72, 153, 0.6);
+  animation: gradient-pan 6s ease infinite;
+
+  &:hover {
+    box-shadow: 0 18px 44px -10px rgba(236, 72, 153, 0.75);
+  }
+}
+
+.btn-ghost {
+  background: var(--surface);
+  border: 1px solid var(--border-strong);
+  backdrop-filter: blur(10px);
+
+  &:hover {
+    background: var(--surface-strong);
+  }
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 500;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  white-space: nowrap;
+}
+
+/* ================================================================
+   Scroll reveal (driven by appReveal directive)
+   ================================================================ */
+/* Uses `translate` + an animation so it never conflicts with hover `transform` transitions. */
+.reveal {
+  opacity: 0;
+
+  &.in {
+    animation: reveal-in 0.9s var(--ease) var(--reveal-delay, 0ms) both;
+  }
+}
+
+@keyframes reveal-in {
+  from {
+    opacity: 0;
+    translate: 0 28px;
+  }
+  to {
+    opacity: 1;
+    translate: 0 0;
+  }
+}
+
+/* ================================================================
+   Animations
+   ================================================================ */
+@keyframes gradient-pan {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(6vw, -4vh, 0) scale(1.08);
+  }
+  66% {
+    transform: translate3d(-4vw, 5vh, 0) scale(0.95);
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .reveal {
+    opacity: 1;
+  }
+}

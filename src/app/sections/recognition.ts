@@ -45,6 +45,9 @@ import { TiltDirective } from '../shared/tilt.directive';
               <h3>{{ e.degree }}</h3>
               <p class="school">{{ e.school }}</p>
               <p class="place"><app-icon name="pin" [size]="13" />{{ e.place }}</p>
+              @if (e.gpa) {
+                <span class="gpa">GPA <strong>{{ e.gpa }}</strong></span>
+              }
             </article>
           }
 
@@ -149,6 +152,27 @@ import { TiltDirective } from '../shared/tilt.directive';
     .tile > p { margin-top: 8px; color: var(--muted); font-size: 0.94rem; }
     .school { color: var(--text) !important; font-weight: 500; }
     .place { display: flex; align-items: center; gap: 6px; font-size: 0.85rem !important; color: var(--faint) !important; }
+    .gpa {
+      display: inline-flex;
+      align-items: baseline;
+      gap: 6px;
+      margin-top: 14px;
+      padding: 5px 12px;
+      border-radius: 99px;
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: color-mix(in srgb, #a855f7 14%, transparent);
+      border: 1px solid color-mix(in srgb, #a855f7 35%, transparent);
+    }
+    .gpa strong {
+      font-family: var(--font-display);
+      font-size: 0.95rem;
+      background: var(--grad-1);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
     .list-tile { grid-column: span 2; }
     .list-tile ul { margin: 12px 0 0; padding: 0; list-style: none; display: grid; gap: 8px; }
     .list-tile li {

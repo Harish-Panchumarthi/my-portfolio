@@ -33,8 +33,8 @@ export const PROFILE: Profile = {
     '12+ years crafting fast, accessible, enterprise-grade web experiences — from AngularJS to Angular 21, React and NX-powered micro frontends for Fortune 500 clients.',
   location: 'Tampa, FL',
   phone: '(980) 643-1118',
-  email: '',
-  linkedin: '',
+  email: 'harishpanchumarthi0909@gmail.com',
+  linkedin: 'https://www.linkedin.com/in/harish-panchumarthi-9b509110b/',
   github: '',
   resumeUrl: '',
 };
@@ -411,11 +411,19 @@ export const EXPERIENCE: Job[] = [
   },
 ];
 
-export const EDUCATION = [
+export interface Education {
+  degree: string;
+  school: string;
+  place: string;
+  gpa?: string;
+}
+
+export const EDUCATION: Education[] = [
   {
     degree: 'Master’s in Computer Science',
     school: 'University of Alabama at Birmingham',
     place: 'Birmingham, AL',
+    gpa: '4.0 / 4.0',
   },
   {
     degree: 'B.Tech, Electronics & Computer Engineering',

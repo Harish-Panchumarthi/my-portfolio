@@ -108,12 +108,17 @@ interface Channel {
       opacity: 0.8;
       pointer-events: none;
     }
-    .cta-inner { position: relative; max-width: 760px; }
+    .cta-inner { position: relative; }
+    .cta-inner > .section-title,
+    .cta-inner > .section-sub { max-width: 760px; }
     .channels {
       margin-top: 40px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 14px;
+    }
+    @media (max-width: 820px) {
+      .channels { grid-template-columns: minmax(0, 1fr); }
     }
     .channel {
       display: flex;
@@ -137,7 +142,7 @@ interface Channel {
     }
     .txt { display: flex; flex-direction: column; min-width: 0; flex: 1; }
     .lbl { font-size: 0.78rem; color: var(--faint); text-transform: uppercase; letter-spacing: 0.08em; }
-    .val, .txt a { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .val, .txt a { font-weight: 600; font-size: 1.05rem; overflow-wrap: break-word; }
     .txt a:hover { color: var(--pink); }
     .copy {
       display: grid;
@@ -204,7 +209,9 @@ interface Channel {
     .toast.show { transform: translate(-50%, 0); opacity: 1; }
 
     @media (max-width: 720px) {
-      .cta { padding: 48px 22px; border-radius: 24px; }
+      .cta { padding: 44px 16px; border-radius: 24px; }
+      .channel { padding: 14px; gap: 12px; }
+      .val, .txt a { font-size: 0.98rem; }
       .footer { flex-direction: column; text-align: center; }
       .footer nav { justify-content: center; }
     }
@@ -221,7 +228,14 @@ export class Contact {
     const p = this.profile;
     const list: Channel[] = [];
     if (p.email) {
-      list.push({ icon: 'mail', label: 'Email', value: p.email, href: `mailto:${p.email}`, copy: p.email });
+      list.push({
+        icon: 'mail',
+        label: 'Email',
+        // zero-width space lets narrow screens wrap neatly before the "@"
+        value: p.email.replace('@', '​@'),
+        href: `mailto:${p.email}`,
+        copy: p.email,
+      });
     }
     if (p.phone) {
       list.push({
